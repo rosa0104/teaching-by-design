@@ -185,3 +185,34 @@ a.post-row:hover {
 /* Diagrams keep their own proportions so no labels are cropped. */
 main .lighten.fit { aspect-ratio: auto; }
 main .lighten.fit img { height: auto; }
+
+/* Budget chart. Categorical series colors are validated for CVD separation
+   and 3:1 contrast against --color-bg; keep this order when adding series. */
+.budget {
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --series-4: #c98500;
+  --series-5: #d55181;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 24px 32px; align-items: center;
+}
+.budget figcaption { grid-column: 1 / -1; }
+.budget-donut { width: 100%; max-width: 280px; }
+.budget-total { font-size: 26px; font-weight: 500; letter-spacing: -0.02em; fill: var(--color-text); text-anchor: middle; }
+.budget-total-label { font-size: 11px; fill: var(--color-neutral-400); text-anchor: middle; }
+.budget-table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.4; }
+.budget-table th, .budget-table td { padding: 8px 0; text-align: left; font-weight: 400; }
+.budget-table thead th {
+  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-neutral-500);
+}
+.budget-table tbody th { color: var(--color-neutral-200); }
+.budget-table td { text-align: right; padding-left: 12px; color: var(--color-text); font-variant-numeric: tabular-nums; }
+.budget-table thead th:not(:first-child) { text-align: right; }
+.budget-table tbody tr {
+  background: linear-gradient(to right, transparent, var(--color-divider) 48px, var(--color-divider) calc(100% - 48px), transparent) no-repeat top / 100% 1px;
+}
+.swatch {
+  display: inline-block; width: 10px; height: 10px; border-radius: 2px;
+  margin-right: 8px; vertical-align: 0; background: var(--swatch);
+}
