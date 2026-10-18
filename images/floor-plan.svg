@@ -5,6 +5,8 @@
     .zone { stroke: #161826; stroke-width: 3; }
   </style>
 
+  <rect width="2000" height="1210" fill="#161826"/>
+
   <text x="935" y="50">Conceptual Floor Plan: flexible zones can be reconfigured by task</text>
 
   <rect x="3" y="93" width="1994" height="1093" fill="none" stroke="#595d6c" stroke-width="3"/>
