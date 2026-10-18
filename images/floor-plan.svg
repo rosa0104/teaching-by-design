@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 1210" width="2000" height="1210" role="img" aria-labelledby="title">
+  <title id="title">Conceptual floor plan: flexible zones can be reconfigured by task</title>
+  <style>
+    text { font-family: Inter, "Segoe UI", system-ui, sans-serif; font-size: 36px; fill: #e9e9ed; text-anchor: middle; }
+    .zone { stroke: #161826; stroke-width: 3; }
+  </style>
+
+  <text x="935" y="50">Conceptual Floor Plan: flexible zones can be reconfigured by task</text>
+
+  <rect x="3" y="93" width="1994" height="1093" fill="none" stroke="#595d6c" stroke-width="3"/>
+
+  <rect class="zone" x="27" y="110" width="929" height="390" fill="#e97132"/>
+  <text x="491" y="292">Collaboration Zone</text>
+  <text x="491" y="343">4 mobile tables incl. 24 seats</text>
+
+  <rect class="zone" x="1041" y="109" width="931" height="391" fill="#156082"/>
+  <text x="1506" y="292">Present + Share</text>
+  <text x="1506" y="343">Interactive display + floor space</text>
+
+  <rect x="871" y="580" width="258" height="108" fill="#232532" stroke="#595d6c" stroke-width="3"/>
+
+  <rect class="zone" x="30" y="730" width="609" height="392" fill="#4e95d9"/>
+  <text x="334" y="939">Maker / STEM</text>
+
+  <rect class="zone" x="652" y="730" width="618" height="392" fill="#7030a0"/>
+  <text x="961" y="914">Focus + Access</text>
+  <text x="961" y="964">Quiet work + adaptive tools</text>
+
+  <rect class="zone" x="1296" y="730" width="685" height="392" fill="#00b050"/>
+  <text x="1638" y="914">Media + Storage</text>
+  <text x="1638" y="964">Charging + tablets + supplies</text>
+
+  <text x="47" y="1170" style="text-anchor: start">Entry</text>
+</svg>
