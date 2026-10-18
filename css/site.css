@@ -181,3 +181,7 @@ a.post-row:hover {
   margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 12px;
   font-size: 14px; line-height: 1.6; color: var(--color-neutral-400);
 }
+
+/* Diagrams keep their own proportions so no labels are cropped. */
+main .lighten.fit { aspect-ratio: auto; }
+main .lighten.fit img { height: auto; }
