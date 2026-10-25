@@ -221,3 +221,9 @@ main .lighten.fit img { height: auto; }
 .prose ol.steps { margin: 0; padding-left: 24px; display: flex; flex-direction: column; gap: 14px; }
 .prose ol.steps li::marker { color: var(--color-accent); }
 .prose > h3:first-child { margin-top: 0; }
+
+/* Document page scans shown side by side; each links to its full-size image. */
+.doc-pages { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 12px; }
+.doc-pages a { display: block; border-radius: var(--radius-md); }
+.doc-pages a:hover img { box-shadow: var(--shadow-md); }
+.doc-pages img { width: 100%; height: auto; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
