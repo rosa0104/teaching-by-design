@@ -217,3 +217,7 @@ main .lighten.fit img { height: auto; }
   display: inline-block; width: 10px; height: 10px; border-radius: 2px;
   margin-right: 8px; vertical-align: 0; background: var(--swatch);
 }
+
+.prose ol.steps { margin: 0; padding-left: 24px; display: flex; flex-direction: column; gap: 14px; }
+.prose ol.steps li::marker { color: var(--color-accent); }
+.prose > h3:first-child { margin-top: 0; }

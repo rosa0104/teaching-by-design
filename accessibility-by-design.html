@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accessibility by Design · Teaching by Design</title>
+<meta name="description" content="Six small changes that make a big difference: making a two-page learning object accessible.">
+<link rel="stylesheet" href="css/nocturne.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<div class="page">
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="index.html" class="nav-brand"><span class="brand-mark">T</span><span>Teaching by Design</span></a>
+      <a href="index.html">Home</a>
+      <a href="blog.html" aria-current="page">Blog</a>
+      <a href="#">About</a>
+    </nav>
+    <div class="rule"></div>
+  </header>
+
+  <main>
+    <article class="post container">
+      <a href="blog.html" class="back-link">← All posts</a>
+      <header class="post-header">
+        <div class="tags"><span class="tag tag-accent">Accessibility</span></div>
+        <h1>Accessibility by Design: Six Small Changes That Make a Big Difference</h1>
+        <p class="lede">What it took to make a two-page learning object accessible, and why passing an automated check is not the goal.</p>
+        <div class="post-byline">Teaching by Design · 4 min read</div>
+      </header>
+
+      <div class="post-layout">
+        <aside class="toc">
+          <div class="toc-label">On this page</div>
+          <a href="#why">Why accessibility matters</a>
+          <a href="#did-well">What already worked</a>
+          <a href="#changes">Six changes</a>
+          <a href="#evaluated">How I evaluated</a>
+          <a href="#perspective">A change in perspective</a>
+          <a href="#refs">References</a>
+        </aside>
+
+        <div class="prose">
+          <h3 id="why">Why Accessibility Matters</h3>
+          <p>Accessible digital content is not simply a technical requirement; it determines whether learners can participate independently in an educational experience. Accessibility supports students who use assistive technology, but thoughtful design can also improve clarity and usability for everyone. Rybin Koob et al. (2022) emphasize that digital accessibility benefits all users, while Huss (2022) found common accessibility problems on school websites, including missing alternative text, confusing links, and poor color contrast. These findings reinforced an important lesson for me: accessibility needs to be considered during design rather than after a learner encounters a barrier.</p>
+
+          <h3 id="did-well">What the Learning Object Already Did Well</h3>
+          <p>I evaluated a two-page learning object titled <em>Orchards and Vineyards</em>. The original document had several positive features. The body text was readable, most text appeared as dark text on a light background, images were placed near the information they supported, and the content generally followed a logical reading sequence. However, visual appearance alone does not guarantee accessibility. WebAIM (n.d.) explains that Word documents need meaningful structure and alternatives that assistive technologies can interpret.</p>
+          <figure>
+            <div class="lighten">
+              <div class="image-placeholder">Before: the original learning object</div>
+            </div>
+            <figcaption>The original <em>Orchards and Vineyards</em> learning object, before the changes.</figcaption>
+          </figure>
+
+          <h3 id="changes">Six Changes I Made</h3>
+          <ol class="steps">
+            <li><strong>I created a true heading structure.</strong> The title and section labels looked like headings visually, but they were not coded as headings. I applied Word Heading styles so screen-reader users can navigate the document structure.</li>
+            <li><strong>I added meaningful alt text to the orchard image.</strong> Its existing description was a temporary computer file path rather than information a learner could use.</li>
+            <li><strong>I added descriptive alt text to the grape image</strong>, identifying the cluster of purple grapes growing on a vine.</li>
+            <li><strong>I corrected the graft-union image description.</strong> The revised alt text identifies the graft union and the arrow pointing to the healed graft.</li>
+            <li><strong>I removed color-only emphasis.</strong> Terms such as <em>grafting</em>, <em>scion</em>, and <em>rootstock</em> appeared in red. I changed them to black, bold text so emphasis does not depend on color perception and contrast is improved.</li>
+            <li><strong>I restructured the grafting procedure.</strong> Three sequential actions were embedded within a paragraph. I converted them into a true numbered list, making the process easier to scan while also giving assistive technology meaningful list structure.</li>
+          </ol>
+          <figure>
+            <div class="lighten">
+              <div class="image-placeholder">After: the revised learning object</div>
+            </div>
+            <figcaption>The revised learning object, after the six changes.</figcaption>
+          </figure>
+
+          <h3 id="evaluated">How I Evaluated Accessibility</h3>
+          <p>Three resources or modes are especially useful for accessibility review. First, Microsoft Word’s <strong>Accessibility Checker</strong> can identify issues such as missing alternative text and structural concerns while a document is being developed. Second, <strong>WebAIM</strong> provides practical guidance for Word documents, including headings, alternative text, lists, links, contrast, and color use (WebAIM, n.d.). For webpages, <strong>WAVE</strong> can identify many WCAG-related errors and make potential barriers easier to inspect. Third, automated checking should be paired with <strong>manual review</strong>, including keyboard navigation and, when possible, screen-reader testing. Rybin Koob et al. (2022) demonstrated the value of testing digital tools with actual screen-reader technology rather than relying only on automated evaluation.</p>
+
+          <h3 id="perspective">A Change in Perspective</h3>
+          <p>This activity changed how I think about accessibility. One particularly revealing issue was that the images technically contained descriptions, but those descriptions were temporary computer file paths rather than meaningful alternatives. An automated process might detect that a description field exists without determining whether it actually helps a learner.</p>
+          <p>Accessibility therefore requires both tools and professional judgment. For educators and instructional technologists, the goal should not simply be to “pass” an accessibility check. The goal is to design content that learners can perceive, navigate, understand, and use as independently as possible.</p>
+
+          <h6 id="refs">References</h6>
+          <div class="rule"></div>
+          <ol class="references">
+            <li>Huss, J. A. (2022). A high school website is a school community’s communication center...but is it ADA compliant? <em>School Community Journal, 32</em>(1), 245-263.</li>
+            <li>Rybin Koob, A., Ibacache Oliva, K. S., Williamson, M., Lamont-Manfre, M., Hugen, A., &amp; Dickerson, A. (2022). Tech tools in pandemic-transformed information literacy instruction: Pushing for digital accessibility. <em>Information Technology and Libraries, 41</em>(4). <a href="https://doi.org/10.6017/ital.v41i4.15383">doi.org/10.6017/ital.v41i4.15383</a></li>
+            <li>WebAIM. (n.d.). <em>Microsoft Word: Creating accessible documents</em>. <a href="https://webaim.org/techniques/word/">webaim.org/techniques/word</a></li>
+            <li>WebAIM. (n.d.). <em>WAVE Web Accessibility Evaluation Tools</em>. <a href="https://wave.webaim.org/">wave.webaim.org</a></li>
+          </ol>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer container">
+    <span>Teaching by Design - Technology, Access &amp; Learning</span>
+    <span>© 2026</span>
+  </footer>
+</div>
+</body>
+</html>
