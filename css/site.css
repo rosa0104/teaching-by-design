@@ -227,3 +227,9 @@ main .lighten.fit img { height: auto; }
 .doc-pages a { display: block; border-radius: var(--radius-md); }
 .doc-pages a:hover img { box-shadow: var(--shadow-md); }
 .doc-pages img { width: 100%; height: auto; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
+
+.prose figure > a { display: block; border-radius: var(--radius-md); }
+.prose img.screenshot { width: 100%; height: auto; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
+.prose figure > a:hover img.screenshot { box-shadow: var(--shadow-md); }
+.prose figure { scroll-margin-top: 96px; }
+.prose p[id] { scroll-margin-top: 96px; }
