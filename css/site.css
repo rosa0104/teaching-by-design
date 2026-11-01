@@ -241,3 +241,4 @@ main .lighten.fit img { height: auto; }
 .compare-table th, .compare-table td { vertical-align: top; padding: 10px 12px 10px 0; }
 .compare-table tbody th { text-align: left; font-weight: 500; color: var(--color-text); font-size: 14px; letter-spacing: 0; text-transform: none; }
 .compare-table td { color: var(--color-neutral-300); }
+.prose figure > a.photo-narrow { max-width: 420px; }
