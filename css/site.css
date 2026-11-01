@@ -233,3 +233,11 @@ main .lighten.fit img { height: auto; }
 .prose figure > a:hover img.screenshot { box-shadow: var(--shadow-md); }
 .prose figure { scroll-margin-top: 96px; }
 .prose p[id] { scroll-margin-top: 96px; }
+
+/* Tables inside posts scroll sideways on narrow screens instead of overflowing. */
+.table-wrap { overflow-x: auto; margin: 4px 0; }
+.compare-table { min-width: 560px; line-height: 1.45; }
+.compare-table caption { caption-side: top; text-align: left; font-size: 13px; color: var(--color-neutral-400); padding-bottom: 8px; }
+.compare-table th, .compare-table td { vertical-align: top; padding: 10px 12px 10px 0; }
+.compare-table tbody th { text-align: left; font-weight: 500; color: var(--color-text); font-size: 14px; letter-spacing: 0; text-transform: none; }
+.compare-table td { color: var(--color-neutral-300); }
