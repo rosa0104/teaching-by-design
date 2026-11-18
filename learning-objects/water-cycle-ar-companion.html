@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Water Cycle AR Companion</title>
+<style>
+:root{--bg:#f7f8fb;--panel:#fff;--text:#1f2937;--muted:#5b6472;--line:#d8dee9;--accent:#1f5f99;--soft:#eff6ff;--good:#14532d;--goodbg:#ecfdf5;--bad:#7f1d1d;--badbg:#fef2f2;--focus:#7c3aed}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+body.large{font-size:1.15rem}body.contrast{--bg:#000;--panel:#111;--text:#fff;--muted:#e5e7eb;--line:#777;--accent:#7dd3fc;--soft:#0c2f42;--good:#bbf7d0;--goodbg:#12351f;--bad:#fecaca;--badbg:#451a1a;--focus:#fde047}
+.skip{position:absolute;left:-9999px}.skip:focus{left:12px;top:12px;z-index:99;background:#fff;color:#000;padding:10px;border:3px solid #000}
+header{background:var(--panel);border-bottom:1px solid var(--line);padding:16px 20px;position:sticky;top:0;z-index:5}
+.bar{max-width:980px;margin:auto;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.controls{display:flex;gap:8px}button,select{font:inherit}button{cursor:pointer;border:1px solid var(--line);background:var(--panel);color:var(--text);padding:9px 12px;border-radius:10px;font-weight:700}
+button:hover{background:var(--soft)}button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+main{max-width:980px;margin:auto;padding:28px 18px 60px}.hero{background:linear-gradient(135deg,var(--soft),var(--panel));border:1px solid var(--line);border-radius:18px;padding:28px}
+h1{margin:0 0 10px;font-size:clamp(2rem,5vw,3.2rem);line-height:1.08}h2{margin-top:34px}.eyebrow{font-weight:800;color:var(--accent);text-transform:uppercase;font-size:.83rem;letter-spacing:.04em}.lead{font-size:1.12rem;max-width:800px}
+.objective,.callout,.detail,.question,.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}.objective{border-left:6px solid var(--accent);margin-top:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}.process{width:100%;text-align:left;min-height:110px}.process strong{display:block;font-size:1.1rem;margin-bottom:4px}
+.detail{margin-top:14px}.option{display:block;border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:8px 0;background:var(--panel)}.option:hover{background:var(--soft)}
+.feedback{margin-top:12px;padding:12px;border-radius:10px;font-weight:700}.correct{background:var(--goodbg);color:var(--good);border:1px solid var(--good)}.incorrect{background:var(--badbg);color:var(--bad);border:1px solid var(--bad)}
+.sequence{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}.sequence label{font-weight:700}.sequence select{width:100%;margin-top:5px;padding:10px;border-radius:9px;border:1px solid var(--line);background:var(--panel);color:var(--text)}
+.checklist label{display:block;margin:10px 0}.muted{color:var(--muted)}.pill{display:inline-block;padding:4px 9px;border:1px solid var(--line);border-radius:999px;margin:2px 4px 2px 0;background:var(--panel);font-size:.9rem}
+footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.95rem}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header><div class="bar"><strong>Water Cycle AR Companion</strong><div class="controls"><button id="font">Larger text</button><button id="contrast">High contrast</button></div></div></header>
+<main id="main">
+<section class="hero">
+<div class="eyebrow">Grades 3–6 Science • Reusable Learning Object</div>
+<h1>Predict • Explore • Explain the Water Cycle</h1>
+<p class="lead">This interactive object prepares students for an augmented-reality water-cycle station and helps them explain what they observe afterward. No headset is required.</p>
+<div class="objective"><strong>Learning Objective:</strong> After completing the object, students will identify and sequence evaporation, condensation, precipitation, and collection and explain how heat from the Sun drives the cycle.</div>
+<p><span class="pill">Keyboard friendly</span><span class="pill">Immediate feedback</span><span class="pill">No color-only directions</span><span class="pill">Reusable</span><span class="pill">Screen-based alternative</span></p>
+</section>
+
+<section><h2>1. Explore the four processes</h2><p>Select each process to reveal an explanation and an AR observation prompt.</p>
+<div class="grid">
+<button class="process" data-k="evap"><strong>Evaporation</strong>Liquid water changes into water vapor.</button>
+<button class="process" data-k="cond"><strong>Condensation</strong>Water vapor cools and forms tiny droplets.</button>
+<button class="process" data-k="prec"><strong>Precipitation</strong>Water falls from clouds to Earth.</button>
+<button class="process" data-k="coll"><strong>Collection</strong>Water gathers at Earth's surface.</button>
+</div><div id="detail" class="detail" aria-live="polite"><strong>Choose a process above.</strong><p class="muted">The explanation will appear here.</p></div></section>
+
+<section><h2>2. Predict before the AR experience</h2><div class="question"><p><strong>If sunlight warms a puddle after a rainstorm, which change would most likely happen first?</strong></p>
+<label class="option"><input type="radio" name="p" value="a"> The water freezes.</label>
+<label class="option"><input type="radio" name="p" value="b"> Some liquid water changes into water vapor.</label>
+<label class="option"><input type="radio" name="p" value="c"> A cloud immediately produces hail.</label>
+<button id="checkP">Check prediction</button><div id="pf" aria-live="polite"></div></div></section>
+
+<section><h2>3. Build the cycle</h2><p>Choose the processes in order for water moving from a lake, into the atmosphere, into a cloud, and back to Earth.</p>
+<div class="sequence">
+<label>Step 1<select id="s1"><option value="">Choose</option><option>Evaporation</option><option>Condensation</option><option>Precipitation</option><option>Collection</option></select></label>
+<label>Step 2<select id="s2"><option value="">Choose</option><option>Evaporation</option><option>Condensation</option><option>Precipitation</option><option>Collection</option></select></label>
+<label>Step 3<select id="s3"><option value="">Choose</option><option>Evaporation</option><option>Condensation</option><option>Precipitation</option><option>Collection</option></select></label>
+<label>Step 4<select id="s4"><option value="">Choose</option><option>Evaporation</option><option>Condensation</option><option>Precipitation</option><option>Collection</option></select></label>
+</div><p><button id="checkS">Check sequence</button></p><div id="sf" aria-live="polite"></div></section>
+
+<section><h2>4. AR observation mission</h2><div class="callout"><p><strong>During the AR water-cycle experience, look for evidence of each idea below.</strong></p>
+<div class="checklist">
+<label><input type="checkbox"> I can identify where heat is added.</label>
+<label><input type="checkbox"> I can identify where water vapor cools.</label>
+<label><input type="checkbox"> I can identify where water returns to Earth.</label>
+<label><input type="checkbox"> I can identify at least one place where water collects.</label>
+</div><p class="muted"><strong>No AR device available?</strong> Use a teacher-provided diagram, 3D model, or browser-based simulation and complete the same observation mission.</p></div></section>
+
+<section><h2>5. Check your understanding</h2><form id="quiz">
+<div class="question"><p><strong>1. Which process changes liquid water into water vapor?</strong></p>
+<label class="option"><input type="radio" name="q1" value="e"> Evaporation</label><label class="option"><input type="radio" name="q1" value="c"> Condensation</label><label class="option"><input type="radio" name="q1" value="l"> Collection</label></div>
+<div class="question"><p><strong>2. Why do clouds form?</strong></p>
+<label class="option"><input type="radio" name="q2" value="a"> Water vapor cools and condenses into tiny droplets.</label><label class="option"><input type="radio" name="q2" value="b"> Oceans disappear into the atmosphere.</label><label class="option"><input type="radio" name="q2" value="c"> Precipitation always freezes.</label></div>
+<div class="question"><p><strong>3. Which statement best explains the role of the Sun?</strong></p>
+<label class="option"><input type="radio" name="q3" value="a"> It provides heat energy that supports evaporation.</label><label class="option"><input type="radio" name="q3" value="b"> It creates groundwater directly.</label><label class="option"><input type="radio" name="q3" value="c"> It stops condensation.</label></div>
+<div class="question"><p><strong>4. Which is an example of collection?</strong></p>
+<label class="option"><input type="radio" name="q4" value="a"> Water gathering in a lake after rainfall.</label><label class="option"><input type="radio" name="q4" value="b"> Water vapor cooling into droplets.</label><label class="option"><input type="radio" name="q4" value="c"> Liquid water becoming vapor.</label></div>
+<button type="button" id="score">Score my check</button><div id="qf" aria-live="polite"></div></form></section>
+
+<section><h2>6. Explain what you learned</h2><div class="callout"><p><strong>Complete this sentence aloud or in writing:</strong></p><p>“The Sun helps drive the water cycle because ____________________. After water evaporates, it ____________________.”</p><p class="muted">Students may respond orally, type, draw a labeled diagram, or use speech-to-text.</p></div></section>
+
+<footer><p><strong>Teacher note:</strong> Designed as a companion to a small-group AR science station such as the Merge EDU water-cycle experience proposed in the Flexible Digital Learning &amp; Innovation Lab.</p><p>Accessibility features: semantic headings, keyboard-operable controls, visible focus, adjustable text, high contrast, text feedback, and a non-AR alternative.</p></footer>
+</main>
+<script>
+const D={
+evap:["Evaporation","Heat energy causes some liquid water at Earth's surface to change into water vapor and move into the atmosphere.","AR observation: Find where energy is added. What evidence shows water leaving the surface?"],
+cond:["Condensation","As water vapor rises and cools, it changes into tiny liquid droplets. Many droplets together can form clouds.","AR observation: Locate the cooling stage. What changes in the water's state?"],
+prec:["Precipitation","When droplets or ice crystals in clouds become heavy enough, water returns to Earth's surface as precipitation.","AR observation: Identify how water returns from the atmosphere to the surface."],
+coll:["Collection","Water gathers in oceans, rivers, lakes, soil, and groundwater. From there, it can move through the cycle again.","AR observation: Find two places where water can collect after precipitation."]
+};
+document.querySelectorAll(".process").forEach(b=>b.onclick=()=>{let d=D[b.dataset.k];detail.innerHTML=`<strong>${d[0]}</strong><p>${d[1]}</p><p><strong>${d[2]}</strong></p>`});
+font.onclick=()=>{document.body.classList.toggle("large");let on=document.body.classList.contains("large");font.textContent=on?"Standard text":"Larger text";font.setAttribute("aria-pressed",on)};
+contrast.onclick=()=>{document.body.classList.toggle("contrast");let on=document.body.classList.contains("contrast");contrast.textContent=on?"Standard contrast":"High contrast";contrast.setAttribute("aria-pressed",on)};
+checkP.onclick=()=>{let x=document.querySelector('input[name="p"]:checked');pf.className="feedback "+(x&&x.value==="b"?"correct":"incorrect");pf.textContent=!x?"Choose an answer first.":x.value==="b"?"Correct. Sunlight provides heat energy, allowing liquid water to evaporate.":"Try again. Think about what heat does to liquid water at the surface."};
+checkS.onclick=()=>{let v=["s1","s2","s3","s4"].map(x=>document.getElementById(x).value),a=["Evaporation","Condensation","Precipitation","Collection"];sf.className="feedback "+(v.every((x,i)=>x===a[i])?"correct":"incorrect");sf.textContent=v.some(x=>!x)?"Complete all four steps before checking.":v.every((x,i)=>x===a[i])?"Correct sequence: evaporation → condensation → precipitation → collection.":"Not yet. Start with water leaving the lake as vapor, then follow it into clouds and back to the surface."};
+score.onclick=()=>{let a={q1:"e",q2:"a",q3:"a",q4:"a"},n=0,c=0;for(let k in a){let x=document.querySelector(`input[name="${k}"]:checked`);if(x){n++;if(x.value===a[k])c++}}qf.className="feedback "+(c>=3&&n===4?"correct":"incorrect");qf.textContent=n<4?`You answered ${n} of 4. Complete all questions first.`:`Score: ${c}/4. ${c===4?"Excellent. You can explain the cycle and the Sun's role.":c>=3?"Strong work. Review the item you missed and explain the cycle in your own words.":"Review the four processes above, then try again."}`};
+</script>
+</body></html>

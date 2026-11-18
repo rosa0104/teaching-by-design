@@ -272,3 +272,13 @@ main .lighten.fit img { height: auto; }
 .callout p { font-size: 15px; line-height: 1.6; }
 .callout .btn { padding: 10px 16px; }
 .callout .btn[aria-disabled="true"] { opacity: 0.45; pointer-events: none; }
+
+/* An interactive page embedded in a post. */
+.prose figure.embed iframe {
+  display: block; width: 100%; height: 640px; border: 0;
+  border-radius: var(--radius-md); box-shadow: var(--shadow-sm); background: #f7f8fb;
+}
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
