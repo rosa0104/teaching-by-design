@@ -261,3 +261,14 @@ main .lighten.fit img { height: auto; }
   font-size: 17px; line-height: 1.6; letter-spacing: 0; color: var(--color-text);
 }
 .prose h6 + .rule + blockquote.microblog { margin-top: 4px; }
+
+/* Call-to-action box inside a post, e.g. a link to an external resource. */
+.callout {
+  display: flex; flex-direction: column; gap: 12px; align-items: flex-start;
+  padding: 20px 22px; border-radius: var(--radius-md);
+  background: var(--color-surface); box-shadow: 0 0 0 1px var(--color-accent-700);
+}
+.callout-title { font-size: 20px; font-weight: 500; color: var(--color-text); }
+.callout p { font-size: 15px; line-height: 1.6; }
+.callout .btn { padding: 10px 16px; }
+.callout .btn[aria-disabled="true"] { opacity: 0.45; pointer-events: none; }
