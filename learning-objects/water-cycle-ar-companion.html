@@ -10,7 +10,7 @@ body.large{font-size:1.15rem}body.contrast{--bg:#000;--panel:#111;--text:#fff;--
 .skip{position:absolute;left:-9999px}.skip:focus{left:12px;top:12px;z-index:99;background:#fff;color:#000;padding:10px;border:3px solid #000}
 header{background:var(--panel);border-bottom:1px solid var(--line);padding:16px 20px;position:sticky;top:0;z-index:5}
 .bar{max-width:980px;margin:auto;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
-.controls{display:flex;gap:8px}button,select{font:inherit}button{cursor:pointer;border:1px solid var(--line);background:var(--panel);color:var(--text);padding:9px 12px;border-radius:10px;font-weight:700}
+.controls{display:flex;gap:8px;flex-wrap:wrap}button,select{font:inherit}button{cursor:pointer;border:1px solid var(--line);background:var(--panel);color:var(--text);padding:9px 12px;border-radius:10px;font-weight:700}
 button:hover{background:var(--soft)}button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 main{max-width:980px;margin:auto;padding:28px 18px 60px}.hero{background:linear-gradient(135deg,var(--soft),var(--panel));border:1px solid var(--line);border-radius:18px;padding:28px}
 h1{margin:0 0 10px;font-size:clamp(2rem,5vw,3.2rem);line-height:1.08}h2{margin-top:34px}.eyebrow{font-weight:800;color:var(--accent);text-transform:uppercase;font-size:.83rem;letter-spacing:.04em}.lead{font-size:1.12rem;max-width:800px}
@@ -25,7 +25,8 @@ footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);color:v
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
-<header><div class="bar"><strong>Water Cycle AR Companion</strong><div class="controls"><button id="font">Larger text</button><button id="contrast">High contrast</button></div></div></header>
+<header><div class="bar"><strong>Water Cycle AR Companion</strong><div class="controls"><button id="readAloud" type="button">Read aloud</button><button id="stopReading" type="button" disabled>Stop reading</button><button id="font">Larger text</button><button id="contrast">High contrast</button></div></div></header>
+<p id="speechStatus" class="muted" role="status" style="max-width:980px;margin:8px auto;padding:0 18px">Select text to read it aloud, or read the whole lesson.</p>
 <main id="main">
 <section class="hero">
 <div class="eyebrow">Grades 3–6 Science • Reusable Learning Object</div>
@@ -81,6 +82,46 @@ footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);color:v
 <footer><p><strong>Teacher note:</strong> Designed as a companion to a small-group AR science station such as the Merge EDU water-cycle experience proposed in the Flexible Digital Learning &amp; Innovation Lab.</p><p>Accessibility features: semantic headings, keyboard-operable controls, visible focus, adjustable text, high contrast, text feedback, and a non-AR alternative.</p></footer>
 </main>
 <script>
+const readAloud = document.getElementById("readAloud");
+const stopReading = document.getElementById("stopReading");
+const speechStatus = document.getElementById("speechStatus");
+if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
+  readAloud.disabled = true;
+  speechStatus.textContent = "Read aloud is not available in this browser.";
+} else {
+  let currentSpeech = null;
+  readAloud.onclick = () => {
+    const selection = window.getSelection().toString().trim();
+    const text = selection || document.getElementById("main").innerText;
+    if (!text.trim()) return;
+    currentSpeech = null;
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    currentSpeech = utterance;
+    utterance.lang = document.documentElement.lang;
+    utterance.onend = () => {
+      if (currentSpeech !== utterance) return;
+      currentSpeech = null;
+      stopReading.disabled = true;
+      speechStatus.textContent = "Finished reading.";
+    };
+    utterance.onerror = () => {
+      if (currentSpeech !== utterance) return;
+      currentSpeech = null;
+      stopReading.disabled = true;
+      speechStatus.textContent = "Read aloud could not play. Please try again.";
+    };
+    stopReading.disabled = false;
+    speechStatus.textContent = selection ? "Reading selected text." : "Reading the lesson.";
+    window.speechSynthesis.speak(utterance);
+  };
+  stopReading.onclick = () => {
+    currentSpeech = null;
+    window.speechSynthesis.cancel();
+    stopReading.disabled = true;
+    speechStatus.textContent = "Reading stopped.";
+  };
+}
 const D={
 evap:["Evaporation","Heat energy causes some liquid water at Earth's surface to change into water vapor and move into the atmosphere.","AR observation: Find where energy is added. What evidence shows water leaving the surface?"],
 cond:["Condensation","As water vapor rises and cools, it changes into tiny liquid droplets. Many droplets together can form clouds.","AR observation: Locate the cooling stage. What changes in the water's state?"],
